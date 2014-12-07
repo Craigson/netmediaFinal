@@ -1,0 +1,12 @@
+html {
+    background-color: grey;
+}
+
+#myCanvas {
+    width: 320px;
+    height:240px;
+    position: relative;
+    left: 0px;
+    top: 0px;
+}
+    
