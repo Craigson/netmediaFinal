@@ -2,22 +2,34 @@ var recName
 var recAddress
 var senName
 var personalInfo;
-var thisInfo;
+var thisInfo = '';
 //var address = input.value();
 
+function setup(){
+}
+
+function draw(){
+    
+}
 
 function submit(){
+senName = document.getElementById('sName').value;
 recName = document.getElementById('rName').value;
 recAddress = document.getElementById('rAddress').value;
-senName = document.getElementById('sName').value;
+
+    thisInfo += senName;
+    thisInfo += ',';
+    thisInfo += recName;
+     thisInfo += ',';
+    thisInfo += recAddress;
+   
+   
+    
+    
   
-     thisInfo = {
-        receiverName: recName,
-        receiverAddress: recAddress,
-        senderName: senName
-    };
-           
+
+           console.log(thisInfo);
 httpPost('/addRecipient',{personalInfo: thisInfo});
-console.log(personalInfo);
+
 }
 
