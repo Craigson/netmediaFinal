@@ -23,12 +23,10 @@ button.parent('captureButton');
     
 retake = createButton("retake");
 retake.mousePressed(retakePicture);
+    
 send = createButton("send");
 send.parent('sendButton');
 send.mousePressed(sendImage);
-    
-input = createInput();
-input.parent('emailBox');
 
 }
 
@@ -36,17 +34,13 @@ input.parent('emailBox');
 function draw(){
 if(displayImage == false){
     camera = image(capture,0,0,160,120);
-//button.show();
-//retake.hide();
-//send.hide();
+
 } else if (displayImage == true){
         image(img,0,0,160,120);
-//button.hide();
-//retake.show();
-//send.show();
+
     
     }
- //       console.log(displayImage);
+
 }
 
     
@@ -78,10 +72,6 @@ function recordImage(){
             }
 
 
-function enterEmail(){
-    document.getElementById('mailForm').submit();
-}
-
 function retakePicture(){
     displayImage == false;
     pixelArray.length = 0;
@@ -89,8 +79,7 @@ function retakePicture(){
 }
 
 function sendImage(){
-    httpPost('/retrieveIntegers',{rgbValues: codedString});  
+    httpPost('/retrieveIntegers',{rgbValues: codedString});
     console.log("this sends the image");
-    var address = input.value();
-    console.log(address);
+    window.location="recipient.html";
 }

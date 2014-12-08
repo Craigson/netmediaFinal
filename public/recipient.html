@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+
+    
+<script language="javascript" type="text/javascript" src="/p5.js"></script>
+<script language="javascript" type="text/javascript" src="/p5Dom.js"></script>
+<script language="javascript" type="text/javascript" src="/submitInfo.js"></script>
+
+    
+     <link href="/style.css" type="text/css" rel="stylesheet"></link>
+
+    
+
+    
+<title>Post-visual encryption</title>
+</head>
+<body>
+
+<h1>Enter mailing details</h1>
+
+    <table id="mailInfo">
+        <tr>
+            <td><label>Your name</label></td>
+            <td colspan="2"><input class="textBox" id="sName" type="text"   required/></td>
+        </tr>
+        <tr>
+           <td><label>Recipient name</label></td>
+            <td colspan="2"><input class="textBox" id="rName" type="text"  required/></td>
+        </tr>
+        <tr>
+<td><label>Recipient e-mail address</label></td>
+                    <td colspan="2"><input class="textBox" id="rAddress" type="text" required/></td>
+        </tr>
+        <tr>
+            <td><input type="button" class="sendButton" value="Send" onclick="submit();"/></tr></td>
+    </table>
+<!--
+    <a href="/about">About</a>
+    <a href="/send">Send</a>
+-->
+</body>
+</html>
