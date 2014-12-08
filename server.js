@@ -75,7 +75,7 @@ function showIndex(){
 
 function getYourData(request){
     var yourdata = request.fields.rgbValues;
- //   console.log(yourdata);
+    console.log(yourdata);
     request.respond("okay");
 }
 
@@ -97,7 +97,7 @@ function importData(err,data){
     }
    var codeWords = data.split(",");
   //console.log(words.length);
-    console.log(codeWords);
+  //  console.log(codeWords);
 }
 
 

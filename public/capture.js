@@ -5,13 +5,14 @@ var displayImage;
 var pixelArray = [];
 var codedString;
 var getAddress;
+var intValues = '';
 
 
 function setup(){
 displayImage = false;
-var myCanvas = createCanvas(320,240);
+var myCanvas = createCanvas(160,120);
 capture = createCapture(VIDEO);
-capture.size(320,240);
+capture.size(160,120);
 myCanvas.parent('myContainer');
 capture.hide();
     
@@ -33,12 +34,12 @@ input.parent('emailBox');
 
 function draw(){
 if(displayImage == false){
-    camera = image(capture,0,0,320,240);
+    camera = image(capture,0,0,160,120);
 //button.show();
 //retake.hide();
 //send.hide();
 } else if (displayImage == true){
-        image(img,0,0,320,240);
+        image(img,0,0,160,120);
 //button.hide();
 //retake.show();
 //send.show();
@@ -49,39 +50,43 @@ if(displayImage == false){
 
     
 function recordImage(){
-    var displayCanvas = createCanvas(320,240);
+    var displayCanvas = createCanvas(160,120);
     displayCanvas.parent('displayContainer');
-    img = createImage(320,240);
+    img = createImage(160,120);
     img.loadPixels();
     capture.loadPixels();
     for (var x = 0; x < width; x++){
-        for (var y =0; y < height; y++){
+        for (var y = 0; y < height; y++){
             
-        var r = pixels[y*width+x];
-        var g = pixels[y*width+x+1];
-        var b = pixels[y*width+x+2];
-        var a = pixels[y*width+x+3];
+        var r = capture.pixels[y*width+x];
+        var g = capture.pixels[y*width+x+1];
+        var b = capture.pixels[y*width+x+2];
+        var a = capture.pixels[y*width+x+3];
             
-     //var redString
-     //   var blueString
-     //    var greenString
-     //    var alphaString
-            
-        img.set(x,y, [r,g,b,a]);
+        console.log(r);
+
+     img.set(x,y, [r,g,b,a]);
         
-        pixelArray.push(r,g,b,a);
-            console.log(r);
-        }
+   //     pixelArray.push(r,g,b,a);
+            }
     }
     img.updatePixels();
     capture.updatePixels();
     displayImage == true;
     //console.log(pixelArray.length);
-    codedString = pixelArray.join();
-    
- //     console.log(displayCanvas.elt.toDataURL('image/png'));
-   httpPost('/savedValues',{rgbValues: codedString});
             }
+
+function convertText(){
+    
+     //     var redString
+     //   var blueString
+     //    var greenString
+     //    var alphaString
+    
+    codedString = intValues;
+    httpPost('/savedValues',{rgbValues: codedString});  
+}
+
 
 function enterEmail(){
     document.getElementById('mailForm').submit();
