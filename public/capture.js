@@ -2,6 +2,10 @@ var capture;
 var img;
 var camera;
 var displayImage;
+var pixelArray = [];
+//var fs = require('fs');
+var codedString;
+//var mailer = require('nodemailer');
 
 function setup(){
 displayImage = false;
@@ -26,14 +30,14 @@ send.mousePressed(sendImage);
 function draw(){
 if(displayImage == false){
     camera = image(capture,0,0,320,240);
-    button.display();
-    retake.hide();
-    send.hide();
+ //   button.display();
+//    retake.hide();
+//    send.hide();
 } else if (displayImage == true){
         image(img,0,0,320,240);
-button.hide();
-    retake.display();
-    send.display();
+//button.hide();
+//    retake.display();
+//    send.display();
     
     }
  //       console.log(displayImage);
@@ -50,26 +54,34 @@ function recordImage(){
     for (var x = 0; x < width; x++){
         for (var y =0; y < height; y++){
             
-      //      var loc = i + j*width;
-            
         var r = pixels[y*width+x];
         var g = pixels[y*width+x+1];
         var b = pixels[y*width+x+2];
         var a = pixels[y*width+x+3];
             
-            img.set(x,y, [r,g,b,a]);
+        var redString
+        var blueString
+        var greenString
+        var alphaString
             
+        img.set(x,y, [r,g,b,a]);
+        
+        pixelArray.push(r,g,b,a);
         }
     }
     img.updatePixels();
     capture.updatePixels();
     displayImage == true;
+    console.log(pixelArray.length);
+    
+
 }
 
 function retakePicture(){
     displayImage == false;
+    pixelArray.length = 0;
 }
 
 function sendImage(){
-//converts image data to string and sends via email
+encodeString();
 }
