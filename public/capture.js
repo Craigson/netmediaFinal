@@ -20,13 +20,6 @@ capture.hide();
 button = createButton("Take Picture");
 button.mousePressed(recordImage);
 button.parent('captureButton');
-    
-retake = createButton("retake");
-retake.mousePressed(retakePicture);
-    
-send = createButton("send");
-send.parent('sendButton');
-send.mousePressed(sendImage);
 
 }
 
@@ -36,7 +29,7 @@ if(displayImage == false){
     camera = image(capture,0,0,160,120);
 
 } else if (displayImage == true){
-        image(img,0,0,160,120);
+   //     image(img,0,0,160,120);
 
     
     }
@@ -53,10 +46,10 @@ function recordImage(){
     for (var x = 0; x < width; x++){
         for (var y = 0; y < height; y++){
             
-        var r = capture.pixels[y*width+x];
-        var g = capture.pixels[y*width+x+1];
-        var b = capture.pixels[y*width+x+2];
-        var a = capture.pixels[y*width+x+3];
+        var r = capture.pixels[(y*width+x)*4];
+        var g = capture.pixels[((y*width+x)*4)+3];
+        var b = capture.pixels[((y*width+x)*4)+3];
+        var a = capture.pixels[((y*width+x)*4)+3];
             
      img.set(x,y, [r,g,b,a]);
         
@@ -65,15 +58,17 @@ function recordImage(){
     }
     img.updatePixels();
     capture.updatePixels();
-    displayImage == true;
+  //  displayImage = true;
     console.log(pixelArray.length);
     codedString = pixelArray.join();
     console.log(codedString.length);
+    
+    showButtons();
             }
 
 
 function retakePicture(){
-    displayImage == false;
+    displayImage = false;
     pixelArray.length = 0;
     //this function needs to hide the image
 }
@@ -82,4 +77,13 @@ function sendImage(){
     httpPost('/retrieveIntegers',{rgbValues: codedString});
     console.log("this sends the image");
     window.location="recipient.html";
+}
+
+function showButtons(){
+    retake = createButton("retake");
+retake.mousePressed(retakePicture);
+    
+send = createButton("send");
+send.parent('sendButton');
+send.mousePressed(sendImage);
 }

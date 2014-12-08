@@ -46,13 +46,30 @@ transporter.sendMail(message, function(error, info){
 //end of mail
 
 route('/', showIndex);
+route('/showAbout', showAbout);
+route('/showSend', showSend);
+route('/showReceive', showReceive);
 route('/retrieveIntegers', getRGBAdata);
 route('/addRecipient', getRecipientDetails);
 route('/saveData', writeFile);
+route('/upload', upload);
+route('/api/:name', serveApiData);
 
 
 function showIndex(){
     request.serveFile('index.html');
+}
+
+function showSend(request){
+    request.serveFile('public/send.html');
+}
+
+function showReceive(request){
+request.serveFile('public/receive.html');
+}
+
+function showAbout(request){
+    request.serveFile('public/about.html');
 }
 
 //import the file with 256 unique code code words
@@ -69,7 +86,7 @@ function importData(err,data){
 function getRGBAdata(request){
     var yourdata = request.fields.rgbValues;
    // console.log(yourdata.split(','));
-//writeFile();   
+writeFile();   
    // var newArray = yourdata.split(',');
   //  console.log(newArray.length);
     
@@ -90,6 +107,7 @@ var theirdata = request.fields.personalInfo;
     console.log(address);
     
     
+    //read the encodedWords.txt file in order to add it as an attachment
         fs.readFile('public/data/encodedWords.txt','utf8', encodedData);
 function encodedData(err,data){
     if (err){
@@ -104,16 +122,14 @@ var message = {
     
     subject: "You've received a coded message!",
     
-    text: "test",
+    text: "test\n blah blah \n blah",
     
 
     attachments: [
         {
         filename: 'encodedWords.txt',
-        //get the content from encodedValues
-       content: data,
-     //  filepath: "public/data/encodedWords.txt"     
-           // contentType: 'text/plain'
+        content: data,
+
         }
     ]
 }
@@ -143,7 +159,16 @@ function writeFile(){
 }
 
 
+function upload(request) {
+    var file = request.files.file;
+    uploadFile(file, '/public/data/uploads');
+    //sendPixels();
+}
 
 
+function serveApiData(request){
+    var filename = request.params.name;
+serveFile('public/data/uploads/' + name + '.txt');
+}
 
 start();
