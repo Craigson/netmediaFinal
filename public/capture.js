@@ -6,6 +6,7 @@ var pixelArray = [];
 var codedString;
 var getAddress;
 var intValues = '';
+var img;
 
 
 function setup(){
@@ -63,29 +64,18 @@ function recordImage(){
         var b = capture.pixels[y*width+x+2];
         var a = capture.pixels[y*width+x+3];
             
-        console.log(r);
-
      img.set(x,y, [r,g,b,a]);
         
-   //     pixelArray.push(r,g,b,a);
+    pixelArray.push(r,g,b,a);
             }
     }
     img.updatePixels();
     capture.updatePixels();
     displayImage == true;
-    //console.log(pixelArray.length);
+    console.log(pixelArray.length);
+    codedString = pixelArray.join();
+    console.log(codedString.length);
             }
-
-function convertText(){
-    
-     //     var redString
-     //   var blueString
-     //    var greenString
-     //    var alphaString
-    
-    codedString = intValues;
-    httpPost('/savedValues',{rgbValues: codedString});  
-}
 
 
 function enterEmail(){
@@ -95,11 +85,12 @@ function enterEmail(){
 function retakePicture(){
     displayImage == false;
     pixelArray.length = 0;
+    //this function needs to hide the image
 }
 
 function sendImage(){
+    httpPost('/retrieveIntegers',{rgbValues: codedString});  
     console.log("this sends the image");
     var address = input.value();
     console.log(address);
-//encodeString();
 }

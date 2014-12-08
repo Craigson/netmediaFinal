@@ -1,6 +1,7 @@
 var servi = require('servi');
 var app = new servi(true);
 var fs = require('fs');
+var newArray = [];
 //var mailer = require('nodemailer');
 
 port(3007);
@@ -38,7 +39,7 @@ var message = {
         {
             filename: 'codedMessage.txt',
          //get the content from encodedValues
-         content: fs.createReadStream('data/encodedValues.txt'),
+         content: fs.createReadStream('data/encodedWords.txt'),
             
             contentType: 'text/plain'
         }
@@ -64,33 +65,16 @@ transporter.sendMail(message, function(error, info){
 
 
 route('/', showIndex);
-route('/savedValues', getYourData);
-route('/saveData', encodeString);
+route('/retrieveIntegers', getRGBAdata);
+route('/addReceiver', enterDetails);
+route('/saveData', writeFile);
 
 function showIndex(){
     request.serveFile('index.html');
 
 }
 
-
-function getYourData(request){
-    var yourdata = request.fields.rgbValues;
-    console.log(yourdata);
-    request.respond("okay");
-}
-
-
-
-//need to get codedString from capture.js
-function encodeString(){
-    fs.writeFile('/data/words.txt',yourdata,function (err){
-        if(err) throw err;
-        console.log('it\'s saved in this location');
-                    });
-}
-
-
-           
+//import the file with 256 unique code code words
 function importData(err,data){
     if (err){
         throw err;
@@ -99,6 +83,28 @@ function importData(err,data){
   //console.log(words.length);
   //  console.log(codeWords);
 }
+
+//retrieve RGBA values from image
+function getRGBAdata(request){
+    var yourdata = request.fields.rgbValues;
+   // console.log(yourdata.split(','));
+    var newArray = yourdata.split(',');
+    console.log(newArray.length);
+    
+}
+
+//save the encoded words to a text file for e-mailing
+function writeFile(){
+    fs.writeFile('/data/encodedWords.txt',yourdata,function (err){
+        if(err) throw err;
+        console.log('it\'s saved in this location');
+                    });
+}
+
+function addRecipient(){
+    request.serveFile('recipient.html');
+}
+
 
 
 start();
