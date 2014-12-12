@@ -52,8 +52,6 @@ route('/showReceive', showReceive);
 route('/retrieveIntegers', getRGBAdata);
 route('/addRecipient', getRecipientDetails);
 route('/saveData', writeFile);
-route('/upload', upload);
-route('/api/:name', serveApiData);
 
 
 function showIndex(){
@@ -86,7 +84,15 @@ function importData(err,data){
 function getRGBAdata(request){
     var yourdata = request.fields.rgbValues;
    // console.log(yourdata.split(','));
-writeFile();   
+
+        fs.writeFile('public/data/encodedWords.txt',yourdata,function (err){
+        if(err) {
+            throw err;
+    }
+        console.log('it\'s saved in this location');
+                    });
+    
+    console.log("writing new file");
    // var newArray = yourdata.split(',');
   //  console.log(newArray.length);
     
@@ -122,7 +128,7 @@ var message = {
     
     subject: "You've received a coded message!",
     
-    text: "test\n blah blah \n blah",
+    text: "Hi " + receiver + ",\n \n You've received an encoded message from " + sender + ".  \n \n Go to http://104.131.167.46:3007 to decode your message!",
     
 
     attachments: [
@@ -152,23 +158,8 @@ var message = {
 
 //save the encoded words to a text file for e-mailing
 function writeFile(){
-    fs.writeFile('public/data/encodedWords.txt',yourdata,function (err){
-        if(err) throw err;
-        console.log('it\'s saved in this location');
-                    });
+
 }
 
-
-function upload(request) {
-    var file = request.files.file;
-    uploadFile(file, '/public/data/uploads');
-    //sendPixels();
-}
-
-
-function serveApiData(request){
-    var filename = request.params.name;
-serveFile('public/data/uploads/' + name + '.txt');
-}
 
 start();

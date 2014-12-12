@@ -10,6 +10,7 @@ var img;
 
 
 function setup(){
+        devicePixelScaling(false);
 displayImage = false;
 var myCanvas = createCanvas(160,120);
 capture = createCapture(VIDEO);
@@ -43,19 +44,17 @@ function recordImage(){
     img = createImage(160,120);
     img.loadPixels();
     capture.loadPixels();
-    for (var x = 0; x < width; x++){
-        for (var y = 0; y < height; y++){
+    
+ for (var i = 0; i < 4*(capture.width*capture.height); i+=4){
+        var r = capture.pixels[i];
+        var g = capture.pixels[i+1];
+        var b = capture.pixels[i+2];
+        var a = capture.pixels[i+3];
             
-        var r = capture.pixels[(y*width+x)*4];
-        var g = capture.pixels[((y*width+x)*4)+3];
-        var b = capture.pixels[((y*width+x)*4)+3];
-        var a = capture.pixels[((y*width+x)*4)+3];
-            
-     img.set(x,y, [r,g,b,a]);
+     //img.set(x,y, [r,g,b,a]);
         
     pixelArray.push(r,g,b,a);
             }
-    }
     img.updatePixels();
     capture.updatePixels();
   //  displayImage = true;

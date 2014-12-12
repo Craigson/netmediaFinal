@@ -1,24 +1,38 @@
 
 
-body {
+ body {
     background: url('data/hood.png') bottom left no-repeat fixed;
+     background-size: contain;
     margin:5px;
     padding:5px;
     width:100%;
-    font-family: 'Dosis', sans-serif;
-    font-size:50%;
+    font-family: 'Economica', sans-serif;
+    font-size:100%;
     text-align: center; 
        background-position: left bottom;
     background-repeat: no-repeat;
 }
 
 h1{
+    font-size:100%;
     text-align: center;
         font-weight:10;
+    left:0;
+    right:0;
 }
 
-#everything {
- 
+li {
+    display:inline-block;
+    
+}
+
+#dasForm {
+    text-align:left;
+    position: absolute;
+    top: 50%; left: 50%;
+    width: 200px;
+    height: 200px;
+    margin: -100px 0 0 -100px;
 }
 
 #displayContainer {
@@ -30,24 +44,32 @@ h1{
 }
 
 #myContainer {
+    background-color:RGB(50,0);
+    text-decoration-color:white;
     position: absolute;
     top: 50%; left: 50%;
     width: 200px;
     height: 200px;
     margin: -100px 0 0 -100px;
 }
+
 .link{
-    position:bottom;
+    min-height: 100%;
+    padding:10px;
+    border:10px;
+    height: auto;
 }
-#myContainer {
-    width: 800px;
-    height:120px;
-    margin-left: -400px;
-    left:50%;
-    position: relative;
-    left: 0px;
-    top: 0px;
+
+#boxy{
+    position:relative;
+  border-bottom:1px dotted;
+  margin-left:auto;
+  margin-right:auto;
+  text-align:center;
+  width: 30%; /* whatever width you want */
 }
+
+
 
 #emailBox {
     position: relative;

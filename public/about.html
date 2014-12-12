@@ -5,18 +5,37 @@
     
 <script language="javascript" type="text/javascript" src="/p5.js"></script>
 <script language="javascript" type="text/javascript" src="/p5Dom.js"></script>
-<!--<script language="javascript" type="text/javascript" src="/capture.js"></script>-->
+        <link href='http://fonts.googleapis.com/css?family=Economica:400,400italic' rel='stylesheet' type='text/css'>
     
-     <link href="/style.css" type="text/css" rel="stylesheet"></link>
+<link href="/style.css" type="text/css" rel="stylesheet"></link>
 
     
 
     
-<title>Post-visual encryption</title>
+<title>post-visual encryption</title>
 </head>
 <body>
-<h1> This is the about page </h1>
-
+<h1>About post-visual encryption </h1>
+    <div id="boxy">
+<p><i>Post-visual encryption</i> is a non-visual exploration of the duality of information and imagery.  During the process of developing the project, I was introduced to the term "steganography".  Steganography is the art or practice of concealing a message, image, or file within another message, image, or file.  This is precisely what <i>A picture is worth precisely 256 words</i> aims to achieve.
+        </p>
+        
+<p>
+An image is nothing more than a collection of pixels arranged in a two-dimensional grid.  This is what is referred to as the image's "resolution" and is represented by the width as a product of the height (in pixels).  For example, an HD image will have a grid of 1920 pixels along the horizontal, and 1080 pixels along the vertical, meaning that an HD image will contain precisely 2 073 600 pixels.
+</p>
+        
+<p>
+Each individual pixel has 4 integer values, ranging between 0 and 255, which represent the Red, Green, Blue, and Alpha values of that pixel. Post-visual encryption seeks to replace these integer values with plain text words from the English language, thus masking the data contained in the image when in transit between the origin and the source. 
+</p>
+        
+<p>
+You can send a friend, family member, or even foe, an encrypted photograph by accessing the "send" section of this site.  Just take snapshot using your computer's webcam, enter the recipient's e-mail address and let the code do the rest.  Each pixel will be stored in one long array, with separate RGBA values being stored for each pixel.  An algorhytm then converts these individual values from integers into plain text words that correspond to specific values (between 0 and 255 to be precise).  A new array is created and is filled with the plain text words that represent the RGBA values.  These are saved to the server as a plain text file and sent via an SMTP mail server to the e-mail address of your chosen recipient.
+</p>
+        
+<p>
+Upon receiving the mail, the recipient is prompted to visit this site's "receive" section.  Here they are instructed to upload the plain text attachment that they received.  Once they've done so, a similar algorythm to the one that deconstructed the image converts the plain text back to integer values and systematically recompiles the data.  This data is then used to redraw the original image to the screen.
+        </p>
+</div>
     
     <a href="/" class="link">Back</a>
 <!--

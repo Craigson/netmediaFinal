@@ -3,6 +3,7 @@ var img;
 var displayImage;
 
 function setup(){
+    devicePixelScaling(false);
     displayImage = false;    
   document.getElementById('fileinput').addEventListener('change', readSingleFile, false);
     console.log("a word");
@@ -35,17 +36,14 @@ function readSingleFile(evt) {
     newCanvas.parent('decodeCanvas');
     img = createImage(160,120);
     img.loadPixels();
-    for (var x = 0; x < width; x++){
-        for (var y = 0; y < height; y++){
+
+          for (var i = 0; i < newString.length; i+=4){
+        img.pixels[i] = newString[i];
+        img.pixels[i+1] = newString[i+1];
+        img.pixels[i+2] = newString[i+2];
+        img.pixels[i+3] = newString[i+3];
             
-        var r = newString[(y*width+x)*4];
-        var g = newString[((y*width+x)*4)+1];
-        var b = newString[((y*width+x)*4)+2];
-        var a = newString[((y*width+x)*4)+3];
-            
-            
-     img.set(x,y, [r,g,b,a]);
-            }
+        
     }
     img.updatePixels();
     displayImage = true;
