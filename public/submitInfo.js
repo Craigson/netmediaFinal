@@ -5,7 +5,11 @@ var personalInfo;
 var thisInfo = '';
 //var address = input.value();
 
+var sendMail;
+
 function setup(){
+sendMail = document.getElementById('mail_button');
+sendMail.addEventListener('click',submit);
 }
 
 function draw(){

@@ -5,7 +5,7 @@ var newArray = [];
 var nodemailer = require('nodemailer');
 var mailText = [];
 
-port(3007);
+port(3008);
 
 
 serveFiles("public");
@@ -135,7 +135,7 @@ var message = {
     
     subject: "You've received a coded message!",
     
-    text: "Hi " + receiver + ",\n \n You've received an encoded message from " + sender + ".  \n \n Go to http://104.131.167.46:3007 to decode your message!",
+    text: "Hi " + receiver + ",\n \n You've received an encoded message from " + sender + ".  \n \n Follow the link http://localhost:3008/showReceive and follow the instructions to decypher the message!",
     
 
     attachments: [

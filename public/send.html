@@ -3,9 +3,7 @@
 <head>
 
             <link href='http://fonts.googleapis.com/css?family=Economica:400,400italic' rel='stylesheet' type='text/css'>
-<script language="javascript" type="text/javascript" src="/p5.js"></script>
-<script language="javascript" type="text/javascript" src="/p5Dom.js"></script>
-<script language="javascript" type="text/javascript" src="/capture.js"></script>
+
 
     
      <link href="/style.css" type="text/css" rel="stylesheet"></link>
@@ -18,13 +16,15 @@
 <body>
     <h1> Send an encoded image </h1>
     
+    <div id="instructions">
     <p> Allow the browser access to your webcam and click on the <i>ENCRYPT IMAGE</i> button to take an encrypted-selfie. </p>
+    </div>
 <div id="myContainer"></div>
-    <div id="captureButton"></div>
 <div id="displayContainer"></div>
     <div id="emailBox"></div>
-        <div id="sendButton"></div>
 
+<button id="encrypt_button">ENCRYPT IMAGE</button>
+<button id="send_button">SEND</button>
 
     <div id="menu">
     <a href="/" class="link">Back</a>
@@ -33,5 +33,8 @@
     <a href="/about">About</a>
     <a href="/send">Send</a>
 -->
+    <script language="javascript" type="text/javascript" src="/p5.js"></script>
+<script language="javascript" type="text/javascript" src="/p5Dom.js"></script>
+<script language="javascript" type="text/javascript" src="/capture.js"></script>
 </body>
 </html>

@@ -8,41 +8,58 @@ var getAddress;
 var intValues = '';
 var img;
 
+var myVar;
+var instructs;
+var sendButton;
 
 function setup(){
-        devicePixelScaling(false);
+    
+  myVar  = document.getElementById('encrypt_button');
+    sendButton = document.getElementById('send_button');
+  
+    
+    
+devicePixelScaling(false);
 displayImage = false;
-var myCanvas = createCanvas(160,120);
+var myCanvas = createCanvas(320,240);
 capture = createCapture(VIDEO);
-capture.size(160,120);
+capture.size(320,240);
 myCanvas.parent('myContainer');
 capture.hide();
+
+
     
+myVar.addEventListener('click',recordImage);
+    sendButton.addEventListener('click',sendImage);
+   // sendButton.style.display = 'none';
+    
+/*
 button = createButton("ENCRYPT IMAGE");
 button.mousePressed(recordImage);
 button.parent('captureButton');
+*/
 
 }
 
 
 function draw(){
 if(displayImage == false){
-    camera = image(capture,0,0,160,120);
+    camera = image(capture,0,0,320,240);
 
 } else if (displayImage == true){
    //     image(img,0,0,160,120);
-
-    
     }
 
 }
 
     
 function recordImage(){
-    var displayCanvas = createCanvas(160,120);
+    
+    
+    var displayCanvas = createCanvas(320,240);
     displayCanvas.position(0,100);
     displayCanvas.parent('displayContainer');
-    img = createImage(160,120);
+    img = createImage(320,240);
     img.loadPixels();
     capture.loadPixels();
     
@@ -63,27 +80,28 @@ function recordImage(){
     codedString = pixelArray.join();
     console.log(codedString.length);
     
+    
+    myVar.style.display = 'none';
     showButtons();
+
             }
+
+function showButtons(){
+ 
+
+}
 
 
 function retakePicture(){
     displayImage = false;
     pixelArray.length = 0;
+    
     //this function needs to hide the image
 }
 
 function sendImage(){
-    httpPost('/retrieveIntegers',{rgbValues: codedString});
     console.log("this sends the image");
+    httpPost('/retrieveIntegers',{rgbValues: codedString});
     window.location="recipient.html";
 }
 
-function showButtons(){
-    retake = createButton("retake");
-retake.mousePressed(retakePicture);
-    
-send = createButton("send");
-send.parent('sendButton');
-send.mousePressed(sendImage);
-}

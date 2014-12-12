@@ -11,6 +11,7 @@
     text-align: center; 
     background-position: left bottom;
     background-repeat: no-repeat;
+     color:grey;
 }
 
 h1{
@@ -36,21 +37,30 @@ li {
 }
 
 #displayContainer {
-    position: absolute;
-    top: 50%; left: 50%;
-    width: 200px;
-    height: 200px;
-    margin: -100px 0 0 -100px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  /* bring your own prefixes */
+  transform: translate(-50%, -50%);
+
+}
+
+#defaultCanvas{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  /* bring your own prefixes */
+  transform: translate(-50%, -50%);
+
 }
 
 #myContainer {
     background-color:RGB(50,0);
-    text-decoration-color:white;
-    position: absolute;
-    top: 50%; left: 50%;
-    width: 200px;
-    height: 200px;
-    margin: -100px 0 0 -100px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-top: -50px;
+  margin-left: -100px;
 }
 
 .link{
@@ -75,6 +85,7 @@ li {
     right:0px;
 }
 #boxy{
+    color:grey;
     position:relative;
   border-bottom:1px dotted;
   margin-left:auto;

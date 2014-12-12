@@ -11,7 +11,7 @@ function setup(){
 
 function draw(){
 if (displayImage == true){
-        image(img,0,0,160,120);
+        image(img,0,0,320,240);
 }
 }
 
@@ -31,10 +31,10 @@ function readSingleFile(evt) {
 //             );
           newString = contents.split(',');
           
-          newCanvas = createCanvas(160,120);
+          newCanvas = createCanvas(320,240);
          
     newCanvas.parent('decodeCanvas');
-    img = createImage(160,120);
+    img = createImage(320,240);
     img.loadPixels();
 
           for (var i = 0; i < newString.length; i+=4){
