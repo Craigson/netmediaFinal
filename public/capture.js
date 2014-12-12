@@ -18,7 +18,7 @@ capture.size(160,120);
 myCanvas.parent('myContainer');
 capture.hide();
     
-button = createButton("Take Picture");
+button = createButton("ENCRYPT IMAGE");
 button.mousePressed(recordImage);
 button.parent('captureButton');
 
@@ -40,6 +40,7 @@ if(displayImage == false){
     
 function recordImage(){
     var displayCanvas = createCanvas(160,120);
+    displayCanvas.position(0,100);
     displayCanvas.parent('displayContainer');
     img = createImage(160,120);
     img.loadPixels();

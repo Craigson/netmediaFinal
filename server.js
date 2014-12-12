@@ -52,6 +52,7 @@ route('/showReceive', showReceive);
 route('/retrieveIntegers', getRGBAdata);
 route('/addRecipient', getRecipientDetails);
 route('/saveData', writeFile);
+//route('sayThanks', thanks);
 
 
 function showIndex(){
@@ -69,6 +70,12 @@ request.serveFile('public/receive.html');
 function showAbout(request){
     request.serveFile('public/about.html');
 }
+
+/*
+funciton thanks(){
+    request.serveFile('public/thanks.html');
+}
+*/
 
 //import the file with 256 unique code code words
 function importData(err,data){

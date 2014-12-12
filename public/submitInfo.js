@@ -31,5 +31,6 @@ recAddress = document.getElementById('rAddress').value;
            console.log(thisInfo);
 httpPost('/addRecipient',{personalInfo: thisInfo});
 
+    window.location="thanks.html";
 }
 

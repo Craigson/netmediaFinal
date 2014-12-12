@@ -2,21 +2,21 @@
 
  body {
     background: url('data/hood.png') bottom left no-repeat fixed;
-     background-size: contain;
+    background-size: contain;
     margin:5px;
     padding:5px;
     width:100%;
     font-family: 'Economica', sans-serif;
     font-size:100%;
     text-align: center; 
-       background-position: left bottom;
+    background-position: left bottom;
     background-repeat: no-repeat;
 }
 
 h1{
     font-size:100%;
     text-align: center;
-        font-weight:10;
+    font-weight:10;
     left:0;
     right:0;
 }
@@ -58,8 +58,22 @@ li {
     padding:10px;
     border:10px;
     height: auto;
+    text-decoration: none;
+    color: grey;
 }
 
+#centerpiece{
+   position:absolute;
+    bottom:0;
+    margin:10px;
+    right:0;
+}
+#menu{
+    position:fixed;
+    bottom:10px;
+    left:0px;
+    right:0px;
+}
 #boxy{
     position:relative;
   border-bottom:1px dotted;
